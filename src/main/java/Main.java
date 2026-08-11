@@ -1,0 +1,64 @@
+package main.java;
+
+import main.java.model.User;
+import main.java.service.UserService;
+import main.java.util.FileUtil;
+
+import java.io.IOException;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+
+        UserService service = new UserService();
+
+        service.addUser(new User("Ivan", 25, "ivan@mail.com"));
+        service.addUser(new User("Alex", 30, "alex@mail.com"));
+        service.addUser(new User("Petr", 35, "petr@mail.com"));
+
+        System.out.println("Все пользователи : ");
+        service.printALL();
+
+        System.out.println("\nСортировка по имени: ");
+        service.sortByName();
+        service.printALL();
+
+
+        System.out.println("\nСортировка по возрасту: ");
+        service.sortByAge();
+        service.printALL();
+
+        System.out.println("\nПоиск пользователя по имени 'Alex' :");
+        service.findByName("Alex")
+                .ifPresentOrElse(
+                        user -> System.out.println("Найден " + user),
+                        () -> System.out.println("Не найден")
+                );
+        System.out.println("\nУдаление пользователя с email 'alex@mail.com' ");
+        boolean removed = service.removeByEmail("alex@mail.com");
+        System.out.println(removed ? "Удален" : "Не найден");
+
+
+        System.out.println("\nПосле удаления: ");
+        service.printALL();
+
+
+        //Savefile
+        try {
+            List<User> users = service.getALLUsers();
+            FileUtil.saveUsers(users);
+            System.out.println("\nСписок сохранен в файл users.txt");
+
+
+            //DownLoad file
+
+            List<User> loaded = FileUtil.loadUsers();
+            System.out.println("Загружено из файла: "+loaded.size() + " пользователи");
+            loaded.forEach(System.out::println);
+
+
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Ошибка работы с файлом " + e.getMessage());
+        }
+    }
+}
