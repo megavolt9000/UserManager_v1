@@ -1,4 +1,4 @@
-package main.java.model;
+package model;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -44,36 +44,34 @@ public class User implements Comparable<User>, Serializable {
 
     }
 
-    @ Override
+    @Override
 
-    public int compareTo(User other){
+    public int compareTo(User other) {
         return this.name.compareTo(other.name); // Sort by name
     }
 
     @Override
 
-    public boolean equals (Object o) {
+    public boolean equals(Object o) {
         if (this == o)
             return true;
-        if (!(o instanceof  User))
+        if (!(o instanceof User))
             return false;
-        User user =  ( User) o;
-        return Objects.equals(email,user.email);
+        User user = (User) o;
+        return Objects.equals(email, user.email);
 
     }
 
     @Override
-    public int hashCode (){
-        return  Objects.hash(email);
+    public int hashCode() {
+        return Objects.hash(email);
     }
 
     @Override
 
-    public  String toString (){
+    public String toString() {
         return String.format("%s (%d - %s)", name, age, email);
     }
-
-
 
 
 }

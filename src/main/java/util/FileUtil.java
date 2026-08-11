@@ -1,6 +1,6 @@
-package main.java.util;
+package util;
 
-import main.java.model.User;
+import model.User;
 
 import java.io.*;
 import java.nio.file.Files;

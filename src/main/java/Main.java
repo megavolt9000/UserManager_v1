@@ -1,8 +1,6 @@
-package main.java;
-
-import main.java.model.User;
-import main.java.service.UserService;
-import main.java.util.FileUtil;
+import model.User;
+import service.UserService;
+import util.FileUtil;
 
 import java.io.IOException;
 import java.util.List;
@@ -53,7 +51,7 @@ public class Main {
             //DownLoad file
 
             List<User> loaded = FileUtil.loadUsers();
-            System.out.println("Загружено из файла: "+loaded.size() + " пользователи");
+            System.out.println("Загружено из файла: " + loaded.size() + " пользователи");
             loaded.forEach(System.out::println);
 
 
