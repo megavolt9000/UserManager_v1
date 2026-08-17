@@ -10,7 +10,7 @@ import java.util.List;
 public class FileUtil {
 
 
-    private static final String FILE_NAME = "users.txt";
+    private static final String FILE_NAME = "users.dat";
 
     public static void saveUsers(List<User> users) throws IOException {
         try (ObjectOutputStream oos = new ObjectOutputStream(
@@ -20,7 +20,7 @@ public class FileUtil {
 
     }
 
-    @SuppressWarnings("Unchecked")
+    @SuppressWarnings("unchecked")
 
     public static List<User> loadUsers() throws IOException, ClassNotFoundException {
         Path path = Path.of(FILE_NAME);
