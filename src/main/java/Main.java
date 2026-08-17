@@ -1,10 +1,6 @@
 import database.DatabaseManager;
 import model.User;
 import service.UserService;
-import util.FileUtil;
-
-import java.io.IOException;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,7 +17,7 @@ public class Main {
         service.printALL();
 
         System.out.println("\nСортировка по имени: ");
-       service.sortByName().forEach((System.out::println));
+        service.sortByName().forEach((System.out::println));
 
 
         System.out.println("\nСортировка по возрасту: ");
@@ -40,10 +36,5 @@ public class Main {
 
         System.out.println("\nПосле удаления: ");
         service.printALL();
-
-
-
-
-
     }
 }
