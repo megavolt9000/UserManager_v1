@@ -72,6 +72,4 @@ public class User implements Comparable<User>, Serializable {
     public String toString() {
         return String.format("%s (%d - %s)", name, age, email);
     }
-
-
 }

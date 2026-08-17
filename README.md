@@ -13,8 +13,8 @@
 ## Технологии
 - Java 17
 - Collections, Stream API, Optional
-- I/O (BufferedReader / BufferedWriter)
-- Serializable / CSV
+- I/O (ObjectOutputStream / ObjectInputStream)
+- Сериализация (Serializable)
 
 ## Запуск
 1. Склонировать репозиторий
