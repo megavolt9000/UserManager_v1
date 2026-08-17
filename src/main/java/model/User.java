@@ -6,7 +6,7 @@ import java.util.Objects;
 public class User implements Comparable<User>, Serializable {
     private String name;
     private int age;
-    String email;
+    private String email;
 
     public User(String name, int age, String email) {
 
