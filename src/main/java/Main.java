@@ -1,3 +1,4 @@
+import database.DatabaseManager;
 import model.User;
 import service.UserService;
 import util.FileUtil;
@@ -7,6 +8,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
+        DatabaseManager.createTableIfNotExist();
 
         UserService service = new UserService();
 
@@ -18,13 +21,11 @@ public class Main {
         service.printALL();
 
         System.out.println("\nСортировка по имени: ");
-        service.sortByName();
-        service.printALL();
+       service.sortByName().forEach((System.out::println));
 
 
         System.out.println("\nСортировка по возрасту: ");
-        service.sortByAge();
-        service.printALL();
+        service.sortByAge().forEach(System.out::println);
 
         System.out.println("\nПоиск пользователя по имени 'Alex' :");
         service.findByName("Alex")
@@ -41,22 +42,8 @@ public class Main {
         service.printALL();
 
 
-        //Savefile
-        try {
-            List<User> users = service.getALLUsers();
-            FileUtil.saveUsers(users);
-            System.out.println("\nСписок сохранен в файл users.txt");
 
 
-            //DownLoad file
 
-            List<User> loaded = FileUtil.loadUsers();
-            System.out.println("Загружено из файла: " + loaded.size() + " пользователи");
-            loaded.forEach(System.out::println);
-
-
-        } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Ошибка работы с файлом " + e.getMessage());
-        }
     }
 }
